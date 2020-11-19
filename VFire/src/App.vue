@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     addPessoa(){
-      if(name.trim() === '' || job.trim() === '') return
       namesRef.push({nome: this.nome, edit: false})
       jobRefs.push({job: this.job, edit: false})
     }
