@@ -1,21 +1,41 @@
 <template>
   <div id="app">
     <div>
-      <label>
-        nome:
-      </label>
-      <input type="text" />
-      <button>
-        Adicionar
-      </button>
+      CRUD usando VUEJS + Firebase
+      <hr>
+      <div class="formulario">
+        <label>
+          Nome:
+        </label>
+        <input type="text" v-model="nome"/>
+        <br>
+        <label>
+          Profissão:
+        </label>
+        <input type="text" v-model="job" />
+        <br>
+        <button @click="addPessoa">
+          Adicionar
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import {jobRefs,namesRef} from './Firebase'
 export default {
   data () {
     return {
+      nome: '',
+      job: ''
+    }
+  },
+  methods: {
+    addPessoa(){
+      if(name.trim() === '' || job.trim() === '') return
+      namesRef.push({nome: this.nome, edit: false})
+      jobRefs.push({job: this.job, edit: false})
     }
   }
 }
@@ -23,7 +43,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -47,5 +67,15 @@ li {
 
 a {
   color: #42b983;
+}
+.formulario{
+  width: 170px;
+  border: 3px aqua solid;
+  margin: 20px auto;
+  background-color: rgb(102, 201, 255);
+}
+button{
+  border: 2px;
+  background-color: transparent;
 }
 </style>

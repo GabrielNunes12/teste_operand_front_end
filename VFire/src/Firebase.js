@@ -12,6 +12,7 @@ const firebaseConfig  = {
     }
     const firebaseApp = firebase.initializeApp(firebaseConfig)
 
-    const db = firebaseApp.database()
-    
-export default db
+    export const db = firebaseApp.database()
+    export const namesRef = db.ref('names');
+    export const jobRefs = db.ref('jobs')
+
