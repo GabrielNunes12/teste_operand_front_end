@@ -19,6 +19,13 @@
         </button>
       </div>
     </div>
+    <div>
+        <ul>
+          <li v-for="personName in names" :key="personName['.key']">
+              {{personName}}
+          </li>
+        </ul>
+      </div>
   </div>
 </template>
 
@@ -30,6 +37,9 @@ export default {
       nome: '',
       job: ''
     }
+  },
+  firebase:{
+    names:namesRef
   },
   methods: {
     addPessoa(){
