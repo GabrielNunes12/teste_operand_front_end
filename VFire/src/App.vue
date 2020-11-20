@@ -21,15 +21,29 @@
       <div>
         <ul>
           <li v-for="nomePessoa in nomesRef" :key="nomePessoa['.key']">
-            <p>
-              Nome - {{nomePessoa.nome}}
+            <div v-if="!nomePessoa.edit"> 
+              <p>
+                Nome - {{nomePessoa.nome}}
+                <br>
+                Profissao - {{nomePessoa.job}}
+                <br>
+                <button @click="removerPessoa(nomePessoa['.key'])">
+                  Remover
+                </button>
+                <button @click="editarPessoa(nomePessoa['.key'])">
+                  Editar
+                </button>
+              </p> 
+            </div>
+            <div v-else>
+              <input type="text" v-model="nomePessoa.nome"/>
               <br>
-              Profissao - {{nomePessoa.job}}
+              <input type="text" v-model="nomePessoa.job"/>
               <br>
-              <button @click="removerPessoa(nomePessoa['.key'])">
-                Remover
+              <button @click.prevent="salvarPessoa(nomePessoa)">
+                Salvar
               </button>
-            </p> 
+            </div>
             <br>
           </li>
         </ul>
@@ -59,6 +73,13 @@ export default {
     removerPessoa(key){
       this.nomesRef.splice(key, 1);
       namesRef.child(key).remove();
+    },
+    editarPessoa(key){
+      namesRef.child(key).update({edit: true});
+    },
+    salvarPessoa(nomePessoa){
+      const chave = nomePessoa['.key'];
+      namesRef.child(chave).set({nome: nomePessoa.nome, job: nomePessoa.job, edit: false});
     }
   }
 }
