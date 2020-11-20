@@ -39,7 +39,8 @@ export default {
     }
   },
   firebase:{
-    names:namesRef
+    names:namesRef,
+    jobs:jobRefs
   },
   methods: {
     addPessoa(){
