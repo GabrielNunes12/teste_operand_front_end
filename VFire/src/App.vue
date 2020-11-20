@@ -12,40 +12,53 @@
         <label>
           Profissão:
         </label>
-        <input type="text" v-model="job" />
+        <input type="text" v-model="job"/>
         <br>
         <button @click="addPessoa">
           Adicionar
         </button>
       </div>
-    </div>
-    <div>
+      <div>
         <ul>
-          <li v-for="personName in names" :key="personName['.key']">
-              {{personName}}
+          <li v-for="nomePessoa in nomesRef" :key="nomePessoa['.key']">
+            <p>
+              Nome - {{nomePessoa.nome}}
+              <br>
+              Profissao - {{nomePessoa.job}}
+              <br>
+              <button @click="removerPessoa(nomePessoa['.key'])">
+                Remover
+              </button>
+            </p> 
+            <br>
           </li>
         </ul>
       </div>
+    </div>
   </div>
 </template>
 
 <script>
-import {jobRefs,namesRef} from './Firebase'
+import {namesRef} from './Firebase'
 export default {
   data () {
     return {
       nome: '',
-      job: ''
+      job: '',
+      nomesRef: []
     }
   },
   firebase:{
-    names:namesRef,
-    jobs:jobRefs
+    nomesRef:namesRef,
   },
   methods: {
     addPessoa(){
-      namesRef.push({nome: this.nome, edit: false})
-      jobRefs.push({job: this.job, edit: false})
+      let nomesRef = namesRef.push({nome: this.nome, edit: false, job: this.job})
+      
+    },
+    removerPessoa(key){
+      this.nomesRef.splice(key, 1);
+      namesRef.child(key).remove();
     }
   }
 }

@@ -14,5 +14,4 @@ const firebaseConfig  = {
 
     export const db = firebaseApp.database()
     export const namesRef = db.ref('names');
-    export const jobRefs = db.ref('jobs')
 
