@@ -14,4 +14,20 @@ fiz um CRUD de pessoas com profissão é um crud bem simples, mas que é legal d
   <tr>
     <td>Requisições através de um BasS</td>
   </tr>
+  <tr>
+    <td>Aprimoramento no VueJs</td>
+  </tr>
+  <tr>
+    <td>Aplicando técnicas de clean code</td>
+  </tr>
 </table>
+
+<p>Para usar o projeto</p>
+<br/>
+
+`git clone link do projeto`
+
+<br/>
+
+depois disso dê um <strong> npm install </strong> para baixar as dependencies do projeto -> dê um `npm run dev`
+
