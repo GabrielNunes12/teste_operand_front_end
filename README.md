@@ -20,6 +20,9 @@ fiz um CRUD de pessoas com profissão é um crud bem simples, mas que é legal d
   <tr>
     <td>Aplicando técnicas de clean code</td>
   </tr>
+  <tr>
+    <td>Criando API e chamando</td>
+  </tr>
 </table>
 
 <p>Para usar o projeto</p>
